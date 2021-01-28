@@ -2,11 +2,16 @@ from flask_restful import Resource, reqparse
 from flask_cors import CORS, cross_origin
 from config import model_name, tokenizer_name
 
-# ML model
-#from transformers import BartForConditionalGeneration, BartTokenizer, BartConfig
 
-from transformers import AutoTokenizer, AutoModelForSeq2SeqLM
+def initialize_model():
+    global model
+    global tokenizer
+   
+    # Importing the model
+    from transformers import AutoTokenizer, AutoModelForSeq2SeqLM
 
+    tokenizer = AutoTokenizer.from_pretrained(model_name)
+    model = AutoModelForSeq2SeqLM.from_pretrained(tokenizer_name)
 
 
 class BartModel(Resource):
@@ -16,9 +21,6 @@ class BartModel(Resource):
 
     def post(self, id_):
         data = BartModel.parser.parse_args()
-
-        tokenizer = AutoTokenizer.from_pretrained(model_name)
-        model = AutoModelForSeq2SeqLM.from_pretrained(tokenizer_name)
 
         text_to_summarize = data["text"]
 
