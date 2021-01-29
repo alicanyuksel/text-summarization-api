@@ -11,12 +11,19 @@
 							v-model="inputText"
 							id="text"
 							name="text_name"
-							rows="4"
-							cols="50"
+							rows="15"
+							cols="70"
 						/>
 					</ul>
-					<p>{{ inputText }}</p>
 					<button @click="sendToSummerizer">Summarize</button>
+				</li>
+			</ul>
+
+			<ul v-if="isRequestSended">
+				<li>
+					<h2>Summary</h2>
+					<div class="loader" v-if="loading"></div>
+					<p>{{ summaryText }}</p>
 				</li>
 			</ul>
 		</div>
@@ -25,34 +32,38 @@
 
 
 <script>
-import axios from 'axios';
+import axios from "axios";
+import { config } from "./config.js";
 
 export default {
 	data() {
 		return {
-      inputText: "",
-      summaryText: "",
-      loading: true
+			inputText: "",
+			summaryText: "",
+			loading: true,
+			isRequestSended: false,
 		};
-  },
-  methods: {
-    sendToSummerizer() {
-      var inputJson = {
-        text: this.inputText
-      };
+	},
+	watch: {
+		summaryText(value) {
+			if (value.length > 0) {
+				this.loading = false;
+			}
+		},
+	},
+	methods: {
+		sendToSummerizer() {
+			this.isRequestSended = true;
 
-      var optionAxios = {
-            headers: {
-                'Content-Type': 'application/json'
-            }
-          };
+			var inputJson = {
+				text: this.inputText,
+			};
 
-      axios.post("http://localhost:5000/summary/1", inputJson, optionAxios)
-    .then(response => this.summaryText = response.data);
-
-    console.log(this.summaryText);
-    }
-  }
+			axios
+				.post(config.$api_url, inputJson)
+				.then((response) => (this.summaryText = response.data.summary_text));
+		},
+	},
 };
 </script>
 
@@ -96,7 +107,7 @@ header {
 	border-radius: 10px;
 	padding: 1rem;
 	text-align: center;
-	width: 90%;
+	width: 100%;
 	max-width: 40rem;
 }
 
@@ -122,5 +133,24 @@ header {
 	background-color: #ec3169;
 	border-color: #ec3169;
 	box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.26);
+}
+
+.loader {
+	margin: auto;
+	border: 16px solid #f3f3f3; /* Light grey */
+	border-top: 16px solid #3498db; /* Blue */
+	border-radius: 50%;
+	width: 80px;
+	height: 80px;
+	animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
 }
 </style>
