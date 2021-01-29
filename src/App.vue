@@ -40,7 +40,7 @@ export default {
 		return {
 			inputText: "",
 			summaryText: "",
-			loading: true,
+			loading: false,
 			isRequestSended: false,
 		};
 	},
@@ -50,11 +50,13 @@ export default {
 				this.loading = false;
 			}
 		},
-	},
+  },
 	methods: {
 		sendToSummerizer() {
-			this.isRequestSended = true;
-
+      this.isRequestSended = true;
+      this.loading = !this.loading;
+      this.summaryText = "";
+      
 			var inputJson = {
 				text: this.inputText,
 			};
