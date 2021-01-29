@@ -1,5 +1,6 @@
 from flask import Flask, render_template
 from flask_restful import Api
+from flask_cors import CORS, cross_origin
 import requests
 
 import os
@@ -11,7 +12,7 @@ from resources.BartModel import BartModel, initialize_model
 app = Flask(__name__)
 api = Api(app)
 
-api.add_resource(BartModel, "/summary/<int:id_>")
+api.add_resource(BartModel, "/summary")
 
 # initialize the ML models to get the best inference time on CPU...
 initialize_model()
