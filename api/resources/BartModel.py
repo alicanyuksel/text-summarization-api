@@ -19,7 +19,8 @@ class BartModel(Resource):
     parser.add_argument("text", required=True,
                         help="This field cannot be left blank!")
 
-    def post(self, id_):
+    @cross_origin(origin='*',headers=['Content-Type','application/json', "Access-Control-Allow-Origin"])
+    def post(self):
         data = BartModel.parser.parse_args()
 
         text_to_summarize = data["text"]
