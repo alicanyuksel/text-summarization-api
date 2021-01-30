@@ -9,7 +9,7 @@ For this API backend, [FlaskRESTful](https://flask-restful.readthedocs.io/en/lat
 
 ## To run
 
-The server will initialize the model BART at the same time with the API server. So running the server can take 20-30 seconds. Don't worry about it! After that, you can send your request.
+The server will initialize the model [BART](https://github.com/pytorch/fairseq/tree/master/examples/bart) at the same time with the API server. So running the server can take 20-30 seconds. Don't worry about it! After that, you can send your request.
 
     python app.py
 
