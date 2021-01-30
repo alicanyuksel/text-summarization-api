@@ -26,11 +26,8 @@ Send a post request to API:
         text: "US rapper Snoop Dogg has been sued for $25 (£13m) by a make-up artist who claimed he and his entourage drugged and raped her two years ago. The woman said she was assaulted after a recording of the Jimmy Kimmel Live TV show on the ABC network in 2003. The rapper's spokesman said the allegations were 'untrue' and the woman was 'misusing the legal system as a means of extracting financial gain'. ABC said the claims had 'no merit'. The star has not been charged by police. The lawsuit, filed in Los Angeles on Friday, says the woman's champagne was spiked and she was then assaulted. The rapper's spokesperson said: 'Snoop will have the opportunity to prove in a court of law that [the alleged victim] is opportunistic and deceitful. 'We are confident that in this case, [the alleged victim's] claims against Snoop Dogg will be rejected.' The lawsuit names Snoop Dogg - real name Calvin Broadus - plus three associates, The Walt Disney Company and its parent company ABC Inc."
     }
 
-
-
 Response :
 
     {
         summary_text: "Make-up artist claims she was drugged and raped two years ago. Rapper's spokesman said the allegations were 'untrue' and the woman was'misusing the legal system as a means of extracting financial gain' The lawsuit names Snoop Dogg plus three associates, The Walt Disney Company and its parent company ABC Inc."
     }
-
