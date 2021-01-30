@@ -53,20 +53,22 @@ export default {
 	},
 	methods: {
 		sendToSummerizer() {
-			this.isRequestSended = true;
-			this.loading = !this.loading;
-			this.summaryText = "";
+			if (this.inputText.length > 0) {
+				this.isRequestSended = true;
+				this.loading = !this.loading;
+				this.summaryText = "";
 
-			var inputJson = {
-				text: this.inputText,
-			};
+				var inputJson = {
+					text: this.inputText,
+				};
 
-			axios
-				.post(config.$api_url, inputJson)
-				.then(
-					(response) =>
-						(this.summaryText = response.data.summary_text)
-				);
+				axios
+					.post(config.$api_url, inputJson)
+					.then(
+						(response) =>
+							(this.summaryText = response.data.summary_text)
+					);
+			}
 		},
 	},
 };
