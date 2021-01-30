@@ -2,23 +2,27 @@
 
 For this API backend, [FlaskRESTful](https://flask-restful.readthedocs.io/en/latest/) has been used. It has no database and does not record inputs.
 
-### Requirements
+
+## Requirements
 
     pip install -r requirements.txt
 
-### To run
+
+## To run
 
 The server will initialize the model BART at the same time with the API server. So running the server can take 20-30 seconds. Don't worry about it! After that, you can send your request.
 
     python app.py
 
-### Config
+
+## Config
 
 If you want to change the model used in the backend by default, you just need to put the name of model you want to use in [config.py](./config.py)
 
 Take a look on the [BART repository](https://github.com/pytorch/fairseq/tree/master/examples/bart) to discover other models.
 
-### Example
+
+## Example
 
 Send a post request to API:
 
